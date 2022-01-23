@@ -4,10 +4,10 @@ namespace Homework_4
 {
     public class Program
 {
-    private static int _initialArraySize;
-    private static int _evenArrSize = 0;
-    private static int[] _oddArr;
-    private static int[] _evenArr;
+    private static int initialArraySize;
+    private static int evenArrSize = 0;
+    private static int[] oddArr;
+    private static int[] evenArr;
 
     public static void Main(string[] args)
     {
@@ -17,7 +17,7 @@ namespace Homework_4
 
         // создать массив и заполнить его случайными числами от 1 до 26 включительно
         Console.WriteLine("Randomly filled array:");
-        int[] arr = GenerateArray(_initialArraySize);
+        int[] arr = GenerateArray(initialArraySize);
         Console.WriteLine();
 
         // определить размерность массива с четными числами
@@ -25,13 +25,13 @@ namespace Homework_4
         {
             if (item % 2 == 0)
             {
-                _evenArrSize++;
+                evenArrSize++;
             }
         }
 
         // инициализовать массивы с четными и нечетными числами
-        _evenArr = new int[_evenArrSize];
-        _oddArr = new int[_initialArraySize - _evenArrSize];
+        evenArr = new int[evenArrSize];
+        oddArr = new int[initialArraySize - evenArrSize];
 
         // заполнить четный массив
         int counter = 0;
@@ -39,7 +39,7 @@ namespace Homework_4
         {
             if (arr[i] % 2 == 0)
             {
-                _evenArr[counter] = arr[i];
+                evenArr[counter] = arr[i];
                 counter++;
             }
         }
@@ -50,19 +50,19 @@ namespace Homework_4
         {
             if (arr[i] % 2 == 1)
             {
-                _oddArr[counter1] = arr[i];
+                oddArr[counter1] = arr[i];
                 counter1++;
             }
         }
 
         // преобразовать массивы с числами в массивы с буквами
         Console.WriteLine("Array filled with English alphabet even-numbered letters:");
-        string myStrWithEvenLetters = ConvertIntToCHar(_evenArr);
+        string myStrWithEvenLetters = ConvertIntToCHar(evenArr);
         string myChangedStrWithEvenLetters = ChangeLowerToUpper(myStrWithEvenLetters);
         Console.WriteLine(myChangedStrWithEvenLetters);
 
         Console.WriteLine("Array filled with English alphabet odd-numbered letters:");
-        string myStrWithOddLetters = ConvertIntToCHar(_oddArr);
+        string myStrWithOddLetters = ConvertIntToCHar(oddArr);
         string myChangedStrWithOddLetters = ChangeLowerToUpper(myStrWithOddLetters);
         Console.WriteLine(myChangedStrWithOddLetters);
 
@@ -83,8 +83,8 @@ namespace Homework_4
     {
         Console.WriteLine("Enter the number of array elements");
         string consoleOutput = Console.ReadLine();
-        bool isInt = int.TryParse(consoleOutput, out _initialArraySize);
-        if (isInt && _initialArraySize > 0 && _initialArraySize <= 26)
+        bool isInt = int.TryParse(consoleOutput, out initialArraySize);
+        if (isInt && initialArraySize > 0 && initialArraySize <= 26)
         {
         }
         else
